@@ -2,8 +2,12 @@ services:
   - type: web
     name: ai-air-pencil
     env: python
+    plan: free
+
     buildCommand: |
       apt-get update
-      apt-get install -y libgl1 libglib2.0-0 libegl1
+      apt-get install -y libgl1 libegl1 libglib2.0-0
       pip install -r requirements.txt
-    startCommand: streamlit run ai_writer.py --server.address=0.0.0.0 --server.port=$PORT
+
+    startCommand: |
+      streamlit run ai_writer.py --server.address=0.0.0.0 --server.port=$PORT
